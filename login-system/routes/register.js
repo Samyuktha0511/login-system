@@ -3,7 +3,7 @@ const User = require('../models/userModel');
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const auth = require("../middlewares/auth");
-//const mailer = require("../middleware/sendMail");
+const mailer = require("../middleware/sendMail");
 const { body, validationResult } = require('express-validator');
 
 
@@ -62,7 +62,8 @@ router.post('/',
     user.save()
     //sendEmail(email)
     //sendMail(email, _id)
-    //mailer.sendEmail(email)
+    //mailser.sendEmail(email)
+    mailer.sendEmail(email, _id)
     
     res.status(201).json(user);
     res.redirect('back');
